@@ -1,18 +1,21 @@
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 import './App.css';
-import StartPage from './StartPage.js';
+import GamePage from './components/GamePage/GamePage';
+import Navbar from './components/Navbar/Navbar';
+import StartPage from './components/StartPage/StartPage.js';
+import StatsPage from './components/StatsPage/StatsPage';
 
 const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
-        project react3.0
-        <div className='routes-div'>
-          <Route path='/gamePage' component={null}></Route>
-          <Route path='/gameStats' component={null}></Route>
-        </div>
-        <StartPage key1="111" key2="222"/>
+        <Routes>
+          <Route path="/" element={<StartPage key1="111" key2="222"/>}/>
+          <Route path="gamePage" element={<GamePage/>}/>
+          <Route path="statsPage" element={<StatsPage/>}/>
+        </Routes>
+        <Navbar></Navbar>
       </div>
     </BrowserRouter>
     
