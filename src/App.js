@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import './App.css';
 import GamePage from './components/GamePage/GamePage';
 import Navbar from './components/Navbar/Navbar';
-import StartPage from './components/StartPage/StartPage.js';
+import StartPage from './components/StartPage/StartPage';
 import StatsPage from './components/StatsPage/StatsPage';
 
 const App = () => {

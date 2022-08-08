@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
 
+import styles from './Navbar.module.css';
+
 const Navbar = () => {
   return (
-    <nav className="navbar-nav">
+    <nav className={styles.navbar}>
       <NavLink to="/gamePage">GamePage</NavLink>
       <br></br>
       <br></br>
