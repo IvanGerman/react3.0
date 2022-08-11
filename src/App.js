@@ -12,7 +12,7 @@ const App = (props) => {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<StartPage key1={props.data[0].key1} key2={props.data[1].key2}/>}/>
+          <Route path="/" element={<StartPage state={props.state}/>}/>
           <Route path="gamePage/*" element={<GamePage/>}/>
           <Route path="statsPage/*" element={<StatsPage/>}/>
         </Routes>

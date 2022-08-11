@@ -2,8 +2,8 @@ const StartPage = (props) => {
   return (
     <div>
       StartPage
-      <p>{props.key1}</p>
-      <p>{props.key2}</p>
+      <p>{props.state.startPageData[0].key1}</p>
+      <p>{props.state.startPageData[1].key2}</p>
     </div>
   )
 }

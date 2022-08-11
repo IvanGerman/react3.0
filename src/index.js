@@ -4,16 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-let storeState = [ 
-  {key1 : '111'},
-  {key2 : '222'}
-];
+import state from './redux/state.js';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App data={storeState}/>
+    <App state={state}/>
   </React.StrictMode>
 );
 
