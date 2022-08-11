@@ -6,14 +6,15 @@ import Navbar from './components/Navbar/Navbar';
 import StartPage from './components/StartPage/StartPage';
 import StatsPage from './components/StatsPage/StatsPage';
 
-const App = () => {
+
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<StartPage key1="111" key2="222"/>}/>
-          <Route path="gamePage" element={<GamePage/>}/>
-          <Route path="statsPage" element={<StatsPage/>}/>
+          <Route path="/" element={<StartPage key1={props.data[0].key1} key2={props.data[1].key2}/>}/>
+          <Route path="gamePage/*" element={<GamePage/>}/>
+          <Route path="statsPage/*" element={<StatsPage/>}/>
         </Routes>
         <Navbar></Navbar>
       </div>
