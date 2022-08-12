@@ -5,12 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import state from './redux/state.js';
+import { addMessage } from './redux/state.js';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App state={state}/>
+    <App state={state} addMessage={addMessage}/>
   </React.StrictMode>
 );
 
