@@ -13,7 +13,7 @@ const App = (props) => {
       <div className="App">
         <Routes>
           <Route path="/" element={<StartPage state={props.state}/>}/>
-          <Route path="gamePage/*" element={<GamePage addMessage={props.addMessage}/>}/>
+          <Route path="gamePage/*" element={<GamePage state={props.state.gamePageData} addMessage={props.addMessage}/>}/>
           <Route path="statsPage/*" element={<StatsPage/>}/>
         </Routes>
         <Navbar></Navbar>
