@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from 'uuid';
-import { rerenderAll } from '../render';
 
 let state = {
   startPageData: [
@@ -12,6 +11,8 @@ let state = {
   statsPageData: [],
 };
 
+let rerenderAll = () => {};
+
 export const addMessage = (message) => {
   let newId = uuidv4();
   let newMessage = {
@@ -21,6 +22,10 @@ export const addMessage = (message) => {
   state.gamePageData[0].messages.push(newMessage);
   console.log('state.gamePageData[0].messages--',state.gamePageData[0].messages);
   rerenderAll(state);
+};
+
+export const subscribe = (observer) => {
+  rerenderAll = observer;
 }
 
 export default state;
