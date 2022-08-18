@@ -5,7 +5,10 @@ const GamePage = (props) => { console.log('props.state gamePageData',props.state
 
   let textareaRef = React.createRef();
   const sendData = () => {
-    props.addMessage(textareaRef.current.value);
+    props.dispatch({
+      type: 'ADD-MESSAGE',
+      message: textareaRef.current.value
+    });
     textareaRef.current.value = '';
   }
 

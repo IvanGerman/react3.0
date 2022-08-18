@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const rerenderAll = (state) => {
   root.render(
-    <App state={state} addMessage={store.addMessage.bind(store)}/>
+    <App state={state} dispatch={store.dispatch.bind(store)}/>
     // <React.StrictMode> causes double rendering in development mode
     // <React.StrictMode>
     //   <App state={state} addMessage={addMessage}/>

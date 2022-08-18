@@ -25,15 +25,20 @@ let store = {
     this._rerenderAll = observer;
   },
 
-  addMessage(message) {
-    let newId = uuidv4();
-    let newMessage = {
-      id: newId,
-      message: message
-    };
-    this._state.gamePageData[0].messages.push(newMessage); 
-    console.log('_state.gamePageData[0].messages--',this._state.gamePageData[0].messages);
-    this._rerenderAll(this._state);
+  dispatch(action) {
+    
+    if (action.type === 'ADD-MESSAGE') {
+      let newId = uuidv4();
+      let newMessage = {
+        id: newId,
+        message: action.message
+      };
+      this._state.gamePageData[0].messages.push(newMessage); 
+      console.log('_state.gamePageData[0].messages--',this._state.gamePageData[0].messages);
+      this._rerenderAll(this._state);
+    } else {
+      console.log('other dispatch type called');
+    }
   }
 }
 
