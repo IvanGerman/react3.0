@@ -1,5 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
+const ADD_MESSAGE = 'ADD_MESSAGE';
+
 let store = {
 
   _state: {
@@ -27,7 +29,7 @@ let store = {
 
   dispatch(action) {
     
-    if (action.type === 'ADD-MESSAGE') {
+    if (action.type === 'ADD_MESSAGE') {
       let newId = uuidv4();
       let newMessage = {
         id: newId,
@@ -43,3 +45,11 @@ let store = {
 }
 
 export default store;
+
+
+export const addMessageAC = (message) => {
+  return {
+    type: ADD_MESSAGE,
+    message: message
+  }
+};

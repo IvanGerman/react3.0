@@ -1,14 +1,12 @@
 import React from "react";
+import { addMessageAC } from "../../redux/state";
 import Messages from "../Messages/Messages";
 
 const GamePage = (props) => { console.log('props.state gamePageData',props.state);
 
   let textareaRef = React.createRef();
   const sendData = () => {
-    props.dispatch({
-      type: 'ADD-MESSAGE',
-      message: textareaRef.current.value
-    });
+    props.dispatch(addMessageAC(textareaRef.current.value));
     textareaRef.current.value = '';
   }
 
