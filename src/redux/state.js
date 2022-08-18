@@ -1,31 +1,40 @@
 import { v4 as uuidv4 } from 'uuid';
 
-let state = {
-  startPageData: [
-    {key1 : '111'},
-    {key2 : '222'}
-  ],
-  gamePageData: [
-    {messages: []}
-  ],
-  statsPageData: [],
-};
+let store = {
 
-let rerenderAll = () => {};
+  _state: {
+    startPageData: [
+      {key1 : '111'},
+      {key2 : '222'}
+    ],
+    gamePageData: [
+      {messages: []}
+    ],
+    statsPageData: [],
+  },
 
-export const addMessage = (message) => {
-  let newId = uuidv4();
-  let newMessage = {
-    id: newId,
-    message: message
-  };
-  state.gamePageData[0].messages.push(newMessage);
-  console.log('state.gamePageData[0].messages--',state.gamePageData[0].messages);
-  rerenderAll(state);
-};
+  getState() {
+    return this._state;
+  },
 
-export const subscribe = (observer) => {
-  rerenderAll = observer;
+  _rerenderAll() {
+
+  },
+
+  subscribe(observer) {
+    this._rerenderAll = observer;
+  },
+
+  addMessage(message) {
+    let newId = uuidv4();
+    let newMessage = {
+      id: newId,
+      message: message
+    };
+    this._state.gamePageData[0].messages.push(newMessage); 
+    console.log('_state.gamePageData[0].messages--',this._state.gamePageData[0].messages);
+    this._rerenderAll(this._state);
+  }
 }
 
-export default state;
+export default store;
