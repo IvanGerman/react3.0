@@ -1,5 +1,5 @@
 import React from "react";
-import { addMessageAC } from "../../redux/state";
+import { addMessageAC } from "../../redux/gamePageReducer";
 import Messages from "../Messages/Messages";
 
 const GamePage = (props) => { console.log('props.state gamePageData',props.state);
