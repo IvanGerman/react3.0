@@ -2,7 +2,11 @@ import { v4 as uuidv4 } from 'uuid';
 
 const ADD_MESSAGE = 'ADD_MESSAGE';
 
-export const gamePageReducer = (state, action) => {
+let initialState = [
+  {messages: []}
+]
+
+export const gamePageReducer = (state = initialState, action) => {
 
   switch(action.type) {
 

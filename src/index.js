@@ -4,12 +4,12 @@ import reportWebVitals from './reportWebVitals';
 
 import './index.css';
 import App from './App';
-import store from './redux/store.js';
+import store from './redux/redux-store.js';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const rerenderAll = (state) => {
+const rerenderAll = (state) => { 
   root.render(
     <App state={state} dispatch={store.dispatch.bind(store)}/>
     // <React.StrictMode> causes double rendering in development mode
@@ -20,7 +20,10 @@ const rerenderAll = (state) => {
 };
 
 rerenderAll(store.getState());
-store.subscribe(rerenderAll);
+store.subscribe(() => {
+  let state = store.getState();
+  rerenderAll(state);
+});
 
 
 // If you want to start measuring performance in your app, pass a function
