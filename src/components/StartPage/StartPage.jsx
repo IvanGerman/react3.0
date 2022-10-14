@@ -1,4 +1,4 @@
-const StartPage = (props) => {
+const StartPage = (props) => { 
   return (
     <div>
       StartPage
