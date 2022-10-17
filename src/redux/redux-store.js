@@ -1,4 +1,5 @@
-import { combineReducers, createStore } from "redux";
+// createStore is deprecated now
+import { combineReducers,  legacy_createStore as createStore } from "redux";
 import { gamePageReducer } from "./gamePageReducer";
 import { startPageReducer } from "./startPageReducer";
 

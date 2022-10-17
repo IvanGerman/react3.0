@@ -1,7 +1,7 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 import './App.css';
-import GamePage from './components/GamePage/GamePage';
+import GamePageContainer from './components/GamePage/GamePageContainer';
 import Navbar from './components/Navbar/Navbar';
 import StartPage from './components/StartPage/StartPage';
 import StatsPage from './components/StatsPage/StatsPage';
@@ -13,7 +13,7 @@ const App = (props) => {
       <div className="App">
         <Routes>
           <Route path="/" element={<StartPage state={props.state}/>}/>
-          <Route path="gamePage/*" element={<GamePage state={props.state.gamePageData} dispatch={props.dispatch}/>}/>
+          <Route path="gamePage/*" element={<GamePageContainer state={props.state.gamePageData} dispatch={props.dispatch}/>}/>
           <Route path="statsPage/*" element={<StatsPage/>}/>
         </Routes>
         <Navbar></Navbar>

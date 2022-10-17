@@ -1,3 +1,4 @@
+// redux store looks like this:   (its not using in this application)
 import { gamePageReducer } from "./gamePageReducer";
 
 
