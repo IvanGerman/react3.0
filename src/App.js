@@ -13,7 +13,7 @@ const App = (props) => {
       <div className="App">
         <Routes>
           <Route path="/" element={<StartPage state={props.state}/>}/>
-          <Route path="gamePage/*" element={<GamePageContainer state={props.state.gamePageData} dispatch={props.dispatch}/>}/>
+          <Route path="gamePage/*" element={<GamePageContainer store={props.store}/>}/>
           <Route path="statsPage/*" element={<StatsPage/>}/>
         </Routes>
         <Navbar></Navbar>
