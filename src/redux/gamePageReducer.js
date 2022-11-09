@@ -18,7 +18,7 @@ export const gamePageReducer = (state = initialState, action) => {
       };
       state[0].messages.push(newMessage); 
       console.log('_state.gamePageData[0].messages--',state[0].messages);
-      return state;;
+      return state;
     
     default:
       return state;
