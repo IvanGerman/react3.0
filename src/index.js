@@ -11,7 +11,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const rerenderAll = () => { 
+//const rerenderAll = () => { 
   root.render(
     <BrowserRouter>
       <Provider store={store}>
@@ -24,13 +24,13 @@ const rerenderAll = () => {
     //   <App state={state} addMessage={addMessage}/>
     // </React.StrictMode>
   );
-};
+//};
 
 
-rerenderAll();
-store.subscribe(() => {
-  rerenderAll();
-});
+//rerenderAll();
+// store.subscribe(() => {
+//   rerenderAll();
+// });
 
 
 //former rerenderAll block

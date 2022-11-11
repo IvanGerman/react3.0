@@ -8,20 +8,27 @@ let initialState = [
 
 export const gamePageReducer = (state = initialState, action) => {
 
+  console.log('555',state);
+  let state2 = {...state};
+
   switch(action.type) {
 
     case ADD_MESSAGE:
+
       let newId = uuidv4();
       let newMessage = {
         id: newId,
         message: action.message
       };
-      state[0].messages.push(newMessage); 
-      console.log('_state.gamePageData[0].messages--',state[0].messages);
-      return state;
+
+      state2[0].messages = [...state[0].messages];
+      
+      state2[0].messages.push(newMessage); 
+      console.log('_state.gamePageData[0].messages--',state2[0].messages);
+      return state2;
     
     default:
-      return state;
+      return state2;
   }
 
 };
