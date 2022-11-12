@@ -10,6 +10,8 @@ export const gamePageReducer = (state = initialState, action) => {
 
   console.log('555',state);
   let state2 = {...state};
+  //another way to make deep copy(but not sure)
+  //let state2 = {...state, messages: [...state[0].messages]};
 
   switch(action.type) {
 

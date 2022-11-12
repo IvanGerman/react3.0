@@ -7,6 +7,6 @@ let reducers = combineReducers({
   startPageData: startPageReducer,
   gamePageData: gamePageReducer,
 });
-let store = createStore(reducers);
+let store = createStore(reducers); 
 
 export default store;
