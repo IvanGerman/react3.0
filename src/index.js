@@ -11,6 +11,10 @@ import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+//just to watch state from store
+let state = store.getState();
+console.log('state---------',state);
+
 //const rerenderAll = () => { 
   root.render(
     <BrowserRouter>

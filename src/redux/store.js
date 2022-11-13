@@ -9,9 +9,9 @@ let store = {
       {key1 : '111'},
       {key2 : '222'}
     ],
-    gamePageData: [
-      {messages: []}
-    ],
+    gamePageData: {
+      messages: []
+    },
     statsPageData: [],
   },
 
