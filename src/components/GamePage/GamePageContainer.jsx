@@ -19,6 +19,7 @@ import GamePage from "./GamePage";
 
 
 let mapStateToProps = (state) => {
+
   return {
     gamePageData: state.gamePageData,
     textareaRef: React.createRef()
@@ -34,7 +35,7 @@ let mapDispatchToProps = (dispatch) => {
   }
 };
 
-export const SuperGamePageContainer = connect(mapStateToProps, mapDispatchToProps)(GamePage);
+export const GamePageContainer = connect(mapStateToProps, mapDispatchToProps)(GamePage);
 
 
 //export default GamePageContainer;

@@ -34,8 +34,8 @@ export const gamePageReducer = (state = initialState, action) => {
           method: 'POST', 
           mode: 'cors', 
           headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjExMUBtYWlsLnJ1IiwidXNlcklkIjoiNjJkYTNjOTg0NjgxMWYwZmM4OTI1ZDVlIiwiaWF0IjoxNjY4MjY1  NTY3LCJleHAiOjE2Njg0MzgzNjd9.yIqQLQseKavKT1V1w1ksXOq2G-YpDvQgPa2ndM3l3Gc"
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjExMUBtYWlsLnJ1IiwidXNlcklkIjoiNjJkYTNjOTg0NjgxMWYwZmM4OTI1ZDVlIiwiaWF0IjoxNjY4MjY1NTY3LCJleHAiOjE2Njg0MzgzNjd9.yIqQLQseKavKT1V1w1ksXOq2G-YpDvQgPa2ndM3l3Gc'
           },
           body: JSON.stringify(newMessage) 
         })

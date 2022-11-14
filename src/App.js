@@ -1,7 +1,7 @@
 import {Route, Routes} from 'react-router-dom';
 
 import './App.css';
-import GamePageContainer, { SuperGamePageContainer } from './components/GamePage/GamePageContainer';
+import  { GamePageContainer } from './components/GamePage/GamePageContainer';
 import Navbar from './components/Navbar/Navbar';
 import { StartPageContainer } from './components/StartPage/StartPageContainer';
 import StatsPage from './components/StatsPage/StatsPage';
@@ -12,7 +12,7 @@ const App = (props) => {
       <div className="App">
         <Routes>
           <Route path="/" element={<StartPageContainer/>}/>
-          <Route path="gamePage/*" element={<SuperGamePageContainer/>}/>
+          <Route path="gamePage/*" element={<GamePageContainer/>}/>
           {/* <Route path="/" element={<StartPage state={props.state}/>}/> */}
           {/* <Route path="gamePage/*" element={<GamePageContainer store={props.store}/>}/> */}
           <Route path="statsPage/*" element={<StatsPage/>}/>
