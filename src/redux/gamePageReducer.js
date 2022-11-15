@@ -35,7 +35,7 @@ export const gamePageReducer = (state = initialState, action) => {
           mode: 'cors', 
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjExMUBtYWlsLnJ1IiwidXNlcklkIjoiNjJkYTNjOTg0NjgxMWYwZmM4OTI1ZDVlIiwiaWF0IjoxNjY4MjY1NTY3LCJleHAiOjE2Njg0MzgzNjd9.yIqQLQseKavKT1V1w1ksXOq2G-YpDvQgPa2ndM3l3Gc'
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjExMUBtYWlsLnJ1IiwidXNlcklkIjoiNjJkYTNjOTg0NjgxMWYwZmM4OTI1ZDVlIiwiaWF0IjoxNjY4NTE4ODM2LCJleHAiOjE2Njg2OTE2MzZ9.9g4k1nbv_VZdb1y5xJH3jFRTH1tCMi3mj254qy5Vw4A'
           },
           body: JSON.stringify(newMessage) 
         })
@@ -51,6 +51,17 @@ export const gamePageReducer = (state = initialState, action) => {
 
       return state2;
     
+
+    case 'PROVIDE_DATA':
+      
+      action.data.forEach(element => {
+        state2.messages.push({
+          'id': element.id,
+          'message': element.message
+        });
+      });
+      return state2;
+
     default:
       return state2;
   }

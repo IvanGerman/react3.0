@@ -25,7 +25,7 @@ console.log('state---------',state);
       mode: 'cors', 
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjExMUBtYWlsLnJ1IiwidXNlcklkIjoiNjJkYTNjOTg0NjgxMWYwZmM4OTI1ZDVlIiwiaWF0IjoxNjY4MjY1NTY3LCJleHAiOjE2Njg0MzgzNjd9.yIqQLQseKavKT1V1w1ksXOq2G-YpDvQgPa2ndM3l3Gc'
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjExMUBtYWlsLnJ1IiwidXNlcklkIjoiNjJkYTNjOTg0NjgxMWYwZmM4OTI1ZDVlIiwiaWF0IjoxNjY4NTE4ODM2LCJleHAiOjE2Njg2OTE2MzZ9.9g4k1nbv_VZdb1y5xJH3jFRTH1tCMi3mj254qy5Vw4A'
       }
     })
     .then( async (response) => { 
@@ -33,7 +33,11 @@ console.log('state---------',state);
       return response2;
     })
     .then((data) => {
-      console.log('get request data',data);
+      //provide gamePage with messages from mongoDB
+      store.dispatch({
+        type: 'PROVIDE_DATA',
+        data: data
+      })
 
       root.render(
         <BrowserRouter>
@@ -43,7 +47,17 @@ console.log('state---------',state);
         </BrowserRouter>
       );
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      console.log(err);
+      //later to remove
+      root.render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </BrowserRouter>
+      );
+    })
   };
 
   myGetFunc();
