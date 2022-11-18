@@ -1,12 +1,12 @@
 import React from "react";
-import Message from "./Message/Message";
+import {MessageContainer} from "./Message/MessageContainer";
 import './Messages.css';
 
 
 const Messages = (props) => { console.log('props.state',props.state);
 
   let allMessages = props.state.messages.map((elem, index) => {
-    return ( <Message id={elem.id} message={elem.message} key={index}></Message> );
+    return ( <MessageContainer id={elem.id} message={elem.message} key={index}></MessageContainer> );
   })
   return (
     <div className="messages">

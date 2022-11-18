@@ -25,7 +25,7 @@ console.log('state---------',state);
       mode: 'cors', 
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjExMUBtYWlsLnJ1IiwidXNlcklkIjoiNjJkYTNjOTg0NjgxMWYwZmM4OTI1ZDVlIiwiaWF0IjoxNjY4NTE4ODM2LCJleHAiOjE2Njg2OTE2MzZ9.9g4k1nbv_VZdb1y5xJH3jFRTH1tCMi3mj254qy5Vw4A'
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjExMUBtYWlsLnJ1IiwidXNlcklkIjoiNjJkYTNjOTg0NjgxMWYwZmM4OTI1ZDVlIiwiaWF0IjoxNjY4Njk0NzM0LCJleHAiOjE2Njg4Njc1MzR9.joEiD8V78hibNJeqadBQZ-7U4_dxyy0MTNThxllV-oM'
       }
     })
     .then( async (response) => { 

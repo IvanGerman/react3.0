@@ -17,7 +17,7 @@ const GamePage = (props) => { console.log('props---',props);
       <div>
         <button onClick={sendDataParent}>Send your message</button>
       </div>
-      <p>Your messages:</p>
+      <p>Your messages: (left click to delete / right click to update)</p>
       <div className="sent-messages">
         <Messages state={props.gamePageData}></Messages>
       </div>
