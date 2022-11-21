@@ -1,0 +1,15 @@
+button {
+  cursor: pointer;
+}
+
+.updateMenu {
+  position: absolute;
+  top: 5.7vh;
+  left: 37.5vw;
+  display: none;
+}
+
+.updateBtn {
+  background-color: gold;
+  margin: 0 auto;
+}

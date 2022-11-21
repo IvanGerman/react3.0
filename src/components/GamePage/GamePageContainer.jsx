@@ -22,7 +22,9 @@ let mapStateToProps = (state) => {
 
   return {
     gamePageData: state.gamePageData,
-    textareaRef: React.createRef()
+    updatedMessageID: state.gamePageData.updatedMessageID,
+    textareaRef: React.createRef(),
+    textareaRef2: React.createRef()
   }
 };
 

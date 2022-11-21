@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { deleteMessageAC } from "../../../redux/gamePageReducer";
+import { deleteMessageAC, updatedMessageIDAC } from "../../../redux/gamePageReducer";
 import Message from "./Message";
 
 
@@ -16,6 +16,9 @@ let mapDispatchToProps = (dispatch) => {
   return {
     deleteMessage: (id) => {
       dispatch(deleteMessageAC(id));
+    },
+    sendUpdatingMessageID: (id) => {
+      dispatch(updatedMessageIDAC(id));
     }
   }
 };

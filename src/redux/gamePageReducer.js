@@ -2,10 +2,12 @@ import { v4 as uuidv4 } from 'uuid';
 
 const ADD_MESSAGE = 'ADD_MESSAGE';
 const DELETE_MESSAGE = 'DELETE_MESSAGE';
+const UPDATED_MESSAGE_ID = 'UPDATED_MESSAGE_ID';
 
 
 let initialState = {
-  messages: []
+  messages: [],
+  updatedMessageID: ''
 };
 
 
@@ -76,6 +78,12 @@ export const gamePageReducer = (state = initialState, action) => {
       });
       return state2;
 
+    case 'UPDATED_MESSAGE_ID':
+      
+      state2.updatedMessageID = action.id;
+      console.log('state2--',state2);
+      return state2;
+
     default:
       return state2;
   }
@@ -93,6 +101,13 @@ export const addMessageAC = (message) => {
 export const deleteMessageAC = (id) => {
   return {
     type: DELETE_MESSAGE,
+    id: id
+  }
+};
+
+export const updatedMessageIDAC = (id) => {
+  return {
+    type: UPDATED_MESSAGE_ID,
     id: id
   }
 };
