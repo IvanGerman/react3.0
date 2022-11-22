@@ -40,15 +40,6 @@ const Message = (props) => {
     const updateMenu = document.querySelector('.updateMenu');
     updateMenu.style.display = 'block';
     props.sendUpdatingMessageID(messageID);
-    //UPDATE request to server, need updated message and id of old message
-    //const status = await myUpdateFunc(messageID);
-    //if ( status === 200 ) {
-      // dispatch call to update the message in store and rerender
-    //  props.updateMessage(messageID, updatedMessage);
-    //} else {
-    //  console.log('could not update the message');
-    //}
-
   }
 
   return (

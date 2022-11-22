@@ -5,14 +5,14 @@ import './GamePage.css';
 
 const GamePage = (props) => { console.log('props---',props);
 
+  const updateMenu = document.querySelector('.updateMenu');
   // to correct later, to make GamePage a pure component
   const createMessage = () => {
     props.sendData(props.textareaRef);
   };
 
   const updateMessageCallback = () => {
-    console.log('props.textareaRef2.current.value---',props.textareaRef2.current.value);
-    console.log('props.updatedMessageID---', props.updatedMessageID);
+  
     let messageID = props.updatedMessageID;
     let newMessage = props.textareaRef2.current.value;
 
@@ -29,17 +29,18 @@ const GamePage = (props) => { console.log('props---',props);
           {'message': newMessage})
       })
 
-      const status = result.status;
-      console.log('status----',status);
+      const status = result.status; 
 
       if ( status === 200 ) {
-      // here we call dispatch function to change state with new/updated message to rerender 
-      console.log('111111'); 
-      props.updateMessage(messageID, newMessage);
-      console.log('222222'); 
+      // here we call dispatch function to change state with new/updated message to rerender  
+      props.updateMessage(messageID, newMessage); 
+      // close form for pasting in new/updated message
+      updateMenu.style.display = 'none';
 
       } else {
           console.log('could not update the message');
+          // close form for pasting in new/updated message
+          updateMenu.style.display = 'none';
       };
       
     };
