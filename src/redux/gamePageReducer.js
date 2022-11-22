@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const ADD_MESSAGE = 'ADD_MESSAGE';
 const DELETE_MESSAGE = 'DELETE_MESSAGE';
+const UPDATE_MESSAGE = 'UPDATE_MESSAGE';
 const UPDATED_MESSAGE_ID = 'UPDATED_MESSAGE_ID';
 
 
@@ -14,10 +15,10 @@ let initialState = {
 export const gamePageReducer = (state = initialState, action) => {
 
   console.log('555',state);
-  let state2 = {...state};
-  state2.messages = [...state.messages];
+  let stateCopy = {...state};
+  stateCopy.messages = [...state.messages];
   //another way to make deep copy(but not sure)
-  //let state2 = {...state, messages: [...state[0].messages]};
+  //let stateCopy = {...state, messages: [...state[0].messages]};
 
   switch(action.type) {
 
@@ -29,10 +30,10 @@ export const gamePageReducer = (state = initialState, action) => {
         message: action.message
       };
 
-      //state2.messages = [...state.messages];
+      //stateCopy.messages = [...state.messages];
       
-      state2.messages.push(newMessage); 
-      console.log('_state.gamePageData.messages--',state2.messages);
+      stateCopy.messages.push(newMessage); 
+      console.log('_state.gamePageData.messages--',stateCopy.messages);
 
       async function myPostFunc() {
         await fetch('http://localhost:3001/api/messages', {
@@ -54,38 +55,48 @@ export const gamePageReducer = (state = initialState, action) => {
 
       myPostFunc();
 
-      return state2;
+      return stateCopy;
     
 
     case 'DELETE_MESSAGE': 
 
-      for ( let i = 0; i < state2.messages.length; i += 1) {
-        if ( state2.messages[i].id === action.id ) {
-          state2.messages.splice(i, 1);
+      for ( let i = 0; i < stateCopy.messages.length; i += 1) {
+        if ( stateCopy.messages[i].id === action.id ) {
+          stateCopy.messages.splice(i, 1);
           break;
         }
       }
-      return state2;
+      return stateCopy;
 
 
     case 'PROVIDE_DATA':
       
       action.data.forEach(element => {
-        state2.messages.push({
+        stateCopy.messages.push({
           'id': element.id,
           'message': element.message
         });
       });
-      return state2;
+      return stateCopy;
+
+    case 'UPDATE_MESSAGE':
+  
+      for ( let i = 0; i < stateCopy.messages.length; i += 1) {    
+        if ( stateCopy.messages[i].id === action.id ) {
+          stateCopy.messages[i].message = action.newMessage;
+          break;
+        }
+      }
+      return stateCopy;
 
     case 'UPDATED_MESSAGE_ID':
       
-      state2.updatedMessageID = action.id;
-      console.log('state2--',state2);
-      return state2;
+      stateCopy.updatedMessageID = action.id;
+      console.log('stateCopy--',stateCopy);
+      return stateCopy;
 
     default:
-      return state2;
+      return stateCopy;
   }
 
 };
@@ -102,6 +113,14 @@ export const deleteMessageAC = (id) => {
   return {
     type: DELETE_MESSAGE,
     id: id
+  }
+};
+
+export const updateMessageAC = (id, newMessage) => {
+  return {
+    type: UPDATE_MESSAGE,
+    id: id,
+    newMessage: newMessage
   }
 };
 

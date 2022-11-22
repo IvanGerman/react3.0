@@ -10,13 +10,15 @@ const GamePage = (props) => { console.log('props---',props);
     props.sendData(props.textareaRef);
   };
 
-  const updateMessage = () => {
+  const updateMessageCallback = () => {
     console.log('props.textareaRef2.current.value---',props.textareaRef2.current.value);
     console.log('props.updatedMessageID---', props.updatedMessageID);
+    let messageID = props.updatedMessageID;
+    let newMessage = props.textareaRef2.current.value;
 
     async function myUpdateFunc(id, newMessage) {
 
-      await fetch(`http://localhost:3001/api/messages/${id}`, {
+      let result = await fetch(`http://localhost:3001/api/messages/${id}`, {
         method: 'PUT', 
         mode: 'cors', 
         headers: {
@@ -26,15 +28,22 @@ const GamePage = (props) => { console.log('props---',props);
         body: JSON.stringify(
           {'message': newMessage})
       })
-      .then((response) => { 
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
-    };
-    myUpdateFunc(props.updatedMessageID, props.textareaRef2.current.value)
 
+      const status = result.status;
+      console.log('status----',status);
+
+      if ( status === 200 ) {
+      // here we call dispatch function to change state with new/updated message to rerender 
+      console.log('111111'); 
+      props.updateMessage(messageID, newMessage);
+      console.log('222222'); 
+
+      } else {
+          console.log('could not update the message');
+      };
+      
+    };
+    myUpdateFunc(messageID, newMessage);
 
   };
 
@@ -57,7 +66,7 @@ const GamePage = (props) => { console.log('props---',props);
           <textarea rows="5" cols="40" className="updateTxtArea" ref={props.textareaRef2}></textarea>
         </div>
         <div>
-          <button onClick={updateMessage} className="updateBtn">Update your message</button>
+          <button onClick={updateMessageCallback} className="updateBtn">Update your message</button>
         </div>
       </div>
     </div>
