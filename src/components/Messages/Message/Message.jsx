@@ -1,5 +1,7 @@
 import React from "react";
-import './Message.css';
+
+import styles from './Message.module.css';
+
 
 const Message = (props) => { 
 
@@ -10,7 +12,7 @@ const Message = (props) => {
       mode: 'cors', 
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjExMUBtYWlsLnJ1IiwidXNlcklkIjoiNjJkYTNjOTg0NjgxMWYwZmM4OTI1ZDVlIiwiaWF0IjoxNjY4OTQ2ODI1LCJleHAiOjE2NzE1Mzg4MjV9.72t-UXiP0_pD5vNwS3QBRKWBaqWw4WeS_2PCOrqBIgU'
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InR0NTVAbWFpbC5ydSIsInVzZXJJZCI6IjYzN2UyMzBhZmFiMjBjYTMyZTI4Njc3MyIsImlhdCI6MTY2OTIxOTcyMywiZXhwIjoxNjcxODExNzIzfQ.OHeNlK3ensx-xRvFmP_lXuu3XoD4y3qpKmmV28wtKPE'
       }
     });
     const status = result.status;
@@ -37,13 +39,13 @@ const Message = (props) => {
     let messageID = element.id;
     console.log('messageID--',messageID);
     // open form for pasting in new/updated message
-    const updateMenu = document.querySelector('.updateMenu');
+    const updateMenu = document.querySelector('.updateMenuMain');
     updateMenu.style.display = 'block';
     props.sendUpdatingMessageID(messageID);
   }
 
   return (
-    <div className="message" id={props.id} onClick={deleteMessage} onContextMenu={
+    <div className={styles.message} id={props.id} onClick={deleteMessage} onContextMenu={
       (event) => {event.preventDefault();sendUpdatingMessageID(event.target)} }>
       {props.message}
     </div>

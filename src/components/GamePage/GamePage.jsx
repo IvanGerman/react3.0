@@ -1,11 +1,15 @@
 import React from "react";
+
 import Messages from "../Messages/Messages";
-import './GamePage.css';
+import styles from './GamePage.module.css';
 
 
 const GamePage = (props) => { console.log('props---',props);
 
-  const updateMenu = document.querySelector('.updateMenu');
+// this is how to select html element by class using css-modules: 
+// document.querySelector(`.${styles.updateMenu}`)
+  const updateMenu = document.querySelector(`.${styles.updateMenu}`);
+  console.log('updateMenu--',updateMenu);
   // to correct later, to make GamePage a pure component
   const createMessage = () => {
     props.sendData(props.textareaRef);
@@ -23,7 +27,7 @@ const GamePage = (props) => { console.log('props---',props);
         mode: 'cors', 
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjExMUBtYWlsLnJ1IiwidXNlcklkIjoiNjJkYTNjOTg0NjgxMWYwZmM4OTI1ZDVlIiwiaWF0IjoxNjY4OTQ2ODI1LCJleHAiOjE2NzE1Mzg4MjV9.72t-UXiP0_pD5vNwS3QBRKWBaqWw4WeS_2PCOrqBIgU'
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InR0NTVAbWFpbC5ydSIsInVzZXJJZCI6IjYzN2UyMzBhZmFiMjBjYTMyZTI4Njc3MyIsImlhdCI6MTY2OTIxOTcyMywiZXhwIjoxNjcxODExNzIzfQ.OHeNlK3ensx-xRvFmP_lXuu3XoD4y3qpKmmV28wtKPE'
         },
         body: JSON.stringify(
           {'message': newMessage})
@@ -36,11 +40,13 @@ const GamePage = (props) => { console.log('props---',props);
       props.updateMessage(messageID, newMessage); 
       // close form for pasting in new/updated message
       updateMenu.style.display = 'none';
+      props.textareaRef2.current.value = '';
 
       } else {
           console.log('could not update the message');
           // close form for pasting in new/updated message
           updateMenu.style.display = 'none';
+          props.textareaRef2.current.value = '';
       };
       
     };
@@ -62,12 +68,12 @@ const GamePage = (props) => { console.log('props---',props);
         <Messages state={props.gamePageData}></Messages>
       </div>
 
-      <div className="updateMenu" >
+      <div className={`${styles.updateMenu} updateMenuMain`} >
         <div>
           <textarea rows="5" cols="40" className="updateTxtArea" ref={props.textareaRef2}></textarea>
         </div>
         <div>
-          <button onClick={updateMessageCallback} className="updateBtn">Update your message</button>
+          <button onClick={updateMessageCallback} className={styles.updateBtn}>Update your message</button>
         </div>
       </div>
     </div>
