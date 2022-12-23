@@ -3,6 +3,17 @@ import { connect } from "react-redux";
 import { addMessageAC, updateMessageAC } from "../../redux/gamePageReducer";
 import GamePage from "./GamePage";
 
+const GamePageContainer = (props) => {
+  return (
+    <GamePage gamePageData = {props.gamePageData}
+              updatedMessageID = {props.updatedMessageID}
+              textareaRef = {props.textareaRef}
+              textareaRef2 = {props.textareaRef2}
+              sendData = {props.sendData}
+              updateMessage = {props.updateMessage}
+    />
+  )
+}
 
 let mapStateToProps = (state) => {
   return {
@@ -25,4 +36,4 @@ let mapDispatchToProps = (dispatch) => {
   }
 };
 
-export const GamePageContainer = connect(mapStateToProps, mapDispatchToProps)(GamePage);
+export default connect(mapStateToProps, mapDispatchToProps)(GamePageContainer);

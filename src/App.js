@@ -1,7 +1,7 @@
 import {Route, Routes} from 'react-router-dom';
 
 import './App.css';
-import  { GamePageContainer } from './components/GamePage/GamePageContainer';
+import  GamePageContainer from './components/GamePage/GamePageContainer';
 import Navbar from './components/Navbar/Navbar';
 import { StartPageContainer } from './components/StartPage/StartPageContainer';
 import StatsPage from './components/StatsPage/StatsPage';
