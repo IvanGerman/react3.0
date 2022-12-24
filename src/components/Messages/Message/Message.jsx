@@ -12,7 +12,7 @@ const Message = (props) => {
       mode: 'cors', 
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InR0NTVAbWFpbC5ydSIsInVzZXJJZCI6IjYzN2UyMzBhZmFiMjBjYTMyZTI4Njc3MyIsImlhdCI6MTY2OTIxOTcyMywiZXhwIjoxNjcxODExNzIzfQ.OHeNlK3ensx-xRvFmP_lXuu3XoD4y3qpKmmV28wtKPE'
+        'Authorization': process.env.REACT_APP_JWT_TOKEN
       }
     });
     const status = result.status;
