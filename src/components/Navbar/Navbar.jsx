@@ -8,7 +8,7 @@ const Navbar = () => {
       <NavLink to="/gamePage">GamePage</NavLink>
       <br></br>
       <br></br>
-      <NavLink to="/statsPage">StatsPage</NavLink>
+      <NavLink to="/statsPage/*">StatsPage</NavLink>
       <br></br>
       <br></br>
       <NavLink to="/">StartPage</NavLink>
