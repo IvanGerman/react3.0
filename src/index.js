@@ -7,6 +7,7 @@ import App from './App';
 import store from './redux/redux-store.js';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { getAllMessages } from './API/api';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,51 +17,84 @@ let state = store.getState();
 console.log('state---------',state);
 
 //const rerenderAll = () => { 
+  
+
+getAllMessages()
+  .then( async (response) => { 
+  const responseJsoned = await response.json();
+  return responseJsoned;
+})
+  .then((data) => { 
+  //provide gamePage with messages from mongoDB
+  store.dispatch({
+    type: 'PROVIDE_DATA',
+    data: data
+  })
+
+  root.render(
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  );
+})
+.catch(err => {
+  console.log(err);
+  //later to remove
+  root.render(
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  );
+})
 
   // GET request for all messages from mongoDB
-  async function myGetFunc() { 
+  // async function myGetFunc() { 
 
-    await fetch('http://localhost:3001/api/messages', { 
-      method: 'GET', 
-      mode: 'cors', 
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': process.env.REACT_APP_JWT_TOKEN
-      }
-    })
-    .then( async (response) => { 
-      const response2 = await response.json();
-      return response2;
-    })
-    .then((data) => {
-      //provide gamePage with messages from mongoDB
-      store.dispatch({
-        type: 'PROVIDE_DATA',
-        data: data
-      })
+  //   await fetch('http://localhost:3001/api/messages', { 
+  //     method: 'GET', 
+  //     mode: 'cors', 
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Authorization': process.env.REACT_APP_JWT_TOKEN
+  //     }
+  //   })
+  //   .then( async (response) => { 
+  //     const response2 = await response.json();
+  //     return response2;
+  //   })
+  //   .then((data) => {
+  //     //provide gamePage with messages from mongoDB
+  //     store.dispatch({
+  //       type: 'PROVIDE_DATA',
+  //       data: data
+  //     })
 
-      root.render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <App />
-          </Provider>
-        </BrowserRouter>
-      );
-    })
-    .catch(err => {
-      console.log(err);
-      //later to remove
-      root.render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <App />
-          </Provider>
-        </BrowserRouter>
-      );
-    })
-  };
+  //     root.render(
+  //       <BrowserRouter>
+  //         <Provider store={store}>
+  //           <App />
+  //         </Provider>
+  //       </BrowserRouter>
+  //     );
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //     //later to remove
+  //     root.render(
+  //       <BrowserRouter>
+  //         <Provider store={store}>
+  //           <App />
+  //         </Provider>
+  //       </BrowserRouter>
+  //     );
+  //   })
+  // };
 
-  myGetFunc();
+  // myGetFunc();
 
   // root.render(
   //   <BrowserRouter>
