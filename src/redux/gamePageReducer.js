@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { postNewMessageToMongo } from '../API/api';
 
 const ADD_MESSAGE = 'ADD_MESSAGE';
 const DELETE_MESSAGE = 'DELETE_MESSAGE';
@@ -35,25 +36,25 @@ export const gamePageReducer = (state = initialState, action) => {
       stateCopy.messages.push(newMessage); 
       console.log('_state.gamePageData.messages--',stateCopy.messages);
 
-      async function myPostFunc() {
-        await fetch('http://localhost:3001/api/messages', {
-          method: 'POST', 
-          mode: 'cors', 
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': process.env.REACT_APP_JWT_TOKEN
-          },
-          body: JSON.stringify(newMessage) 
-        })
-        .then((response) => { 
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-        });
-      };
+      // async function myPostFunc() {
+      //   await fetch('http://localhost:3001/api/messages', {
+      //     method: 'POST', 
+      //     mode: 'cors', 
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //       'Authorization': process.env.REACT_APP_JWT_TOKEN
+      //     },
+      //     body: JSON.stringify(newMessage) 
+      //   })
+      //   .then((response) => { 
+      //     return response.json();
+      //   })
+      //   .then((data) => {
+      //     console.log(data);
+      //   });
+      // };
 
-      myPostFunc();
+      postNewMessageToMongo(newMessage);
 
       return stateCopy;
     

@@ -1,15 +1,15 @@
 import React from "react";
+import { updateMessage } from "../../API/api";
 
 import Messages from "../Messages/Messages";
 import styles from './GamePage.module.css';
 
 
-const GamePage = (props) => { console.log('props---',props);
+const GamePage = (props) => { 
 
 // this is how to select html element by class using css-modules: 
 // document.querySelector(`.${styles.updateMenu}`)
   const updateMenu = document.querySelector(`.${styles.updateMenu}`);
-  console.log('updateMenu--',updateMenu);
   // to correct later, to make GamePage a pure component
   const createMessage = () => {
     props.sendData(props.textareaRef);
@@ -20,38 +20,25 @@ const GamePage = (props) => { console.log('props---',props);
     let messageID = props.updatedMessageID;
     let newMessage = props.textareaRef2.current.value;
 
-    async function myUpdateFunc(id, newMessage) {
-
-      let result = await fetch(`http://localhost:3001/api/messages/${id}`, {
-        method: 'PUT', 
-        mode: 'cors', 
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': process.env.REACT_APP_JWT_TOKEN
-        },
-        body: JSON.stringify(
-          {'message': newMessage})
-      })
-
-      const status = result.status; 
-
-      if ( status === 200 ) {
-      // here we call dispatch function to change state with new/updated message to rerender  
-      props.updateMessage(messageID, newMessage); 
-      // close form for pasting in new/updated message
-      updateMenu.style.display = 'none';
-      props.textareaRef2.current.value = '';
-
-      } else {
-          console.log('could not update the message');
+    updateMessage(messageID, newMessage)
+        .then((result) => {
+          const status = result.status; 
+         
+          if ( status === 200 ) {
+          // here we call dispatch function to change state with new/updated message to rerender  
+          props.updateMessage(messageID, newMessage); 
           // close form for pasting in new/updated message
           updateMenu.style.display = 'none';
           props.textareaRef2.current.value = '';
-      };
-      
-    };
-    myUpdateFunc(messageID, newMessage);
 
+          } else {
+              console.log('could not update the message');
+              // close form for pasting in new/updated message
+              updateMenu.style.display = 'none';
+              props.textareaRef2.current.value = '';
+            };
+          }
+        )
   };
 
   return (

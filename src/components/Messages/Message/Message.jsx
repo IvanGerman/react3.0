@@ -1,31 +1,16 @@
 import React from "react";
+import { deleteMessageRequest } from "../../../API/api";
 
 import styles from './Message.module.css';
 
 
 const Message = (props) => { 
 
-  async function myDeleteFunc(messageID) {
-    
-    let result = await fetch(`http://localhost:3001/api/messages/${messageID}`, {
-      method: 'DELETE', 
-      mode: 'cors', 
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': process.env.REACT_APP_JWT_TOKEN
-      }
-    });
-    const status = result.status;
-    //result = await result.json();
-    return status;
-  };
-
-
   const deleteMessage = async function(element) {
 
     let messageID = element.target.id;
     //DELETE request to server
-    const status = await myDeleteFunc(messageID);
+    const status = await deleteMessageRequest(messageID);
     if ( status === 200 ) {
       // dispatch call to delete it from store and rerender
       props.deleteMessage(messageID);
