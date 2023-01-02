@@ -103,6 +103,8 @@ export const gamePageReducer = (state = initialState, action) => {
 };
 
 
+//ActionCreators----------------------------------------------------------------------------------------
+
 export const addMessageAC = (message) => {
   return {
     type: ADD_MESSAGE,
@@ -131,3 +133,7 @@ export const updatedMessageIDAC = (id) => {
     id: id
   }
 };
+
+
+
+//ThunkCreators----------------------------------------------------------------------------------------

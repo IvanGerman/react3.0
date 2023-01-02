@@ -1,5 +1,6 @@
 import React from "react";
 import { deleteMessageRequest } from "../../../API/api";
+import { deleteMessageThunkCreator } from "../../../redux/messageReducer";
 
 import styles from './Message.module.css';
 
@@ -10,7 +11,8 @@ const Message = (props) => {
 
     let messageID = element.target.id;
     //DELETE request to server
-    const status = await deleteMessageRequest(messageID);
+    const status = await deleteMessageThunkCreator(messageID);
+    //const status = await deleteMessageRequest(messageID);
     if ( status === 200 ) {
       // dispatch call to delete it from store and rerender
       props.deleteMessage(messageID);
