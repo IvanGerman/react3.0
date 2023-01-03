@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { deleteMessageAC, updatedMessageIDAC } from "../../../redux/gamePageReducer";
+import { deleteMessageThunkCreator } from "../../../redux/messageReducer";
 import Message from "./Message";
 
 
@@ -19,6 +20,10 @@ let mapDispatchToProps = (dispatch) => {
     },
     sendUpdatingMessageID: (id) => {
       dispatch(updatedMessageIDAC(id));
+    },
+    deleteMessageFromDB: async (messageID) => {
+      const result = await dispatch(deleteMessageThunkCreator(messageID));
+      return result; 
     }
   }
 };

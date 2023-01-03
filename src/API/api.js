@@ -69,6 +69,6 @@ export async function deleteMessageRequest(messageID) {
       'Authorization': process.env.REACT_APP_JWT_TOKEN
     }
   });
-  const status = result.status;
-  return status;
+  const status = result.status;                                               
+  return status;                                                                           
 };

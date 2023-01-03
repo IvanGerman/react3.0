@@ -10,15 +10,16 @@ const Message = (props) => {
   const deleteMessage = async function(element) {
 
     let messageID = element.target.id;
-    //DELETE request to server
-    const status = await deleteMessageThunkCreator(messageID);
-    //const status = await deleteMessageRequest(messageID);
-    if ( status === 200 ) {
+    
+    //Thunk with DELETE request to server   
+    const status = await props.deleteMessageFromDB(messageID);
+
+       if ( status === 200 ) {
       // dispatch call to delete it from store and rerender
       props.deleteMessage(messageID);
-    } else {
-      console.log('could not delete the message');
-    }
+      } else {
+        console.log('could not delete the message');
+      };
   };
 
   const sendUpdatingMessageID = async function(element) {

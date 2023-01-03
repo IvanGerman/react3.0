@@ -6,8 +6,11 @@ export const messageReducer = (state = initialState) => {
   return state;
 };
 
-export const deleteMessageThunkCreator = (messageID) => {
-  return (dispatch) => {
-    deleteMessageRequest(messageID);
+
+//ThunkCreators---------------------------------------------------------------------------------------
+
+export const deleteMessageThunkCreator = (messageID) => {  
+  return async (dispatch) => {                        
+    return await deleteMessageRequest(messageID);
   };
 };
