@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 const StatsPage = () => {
@@ -10,11 +10,22 @@ const StatsPage = () => {
   console.log('location---',location);
   //console.log('navigate---',navigate);
 
+  //return <Navigate to="/" replace={true} />
+
+  function useNavigateComponent() {
+    //alert('navigate')
+    //const navigate = useNavigate();
+    //navigate('/gamePage')
+    return <Navigate to="/" replace={true} />
+  };
+
   return (
     <div className="stats-page">
       StatsPage
       <div></div>
       <br/>
+      <button onClick={useNavigateComponent}>Navigate Component</button>
+      <br/><br/>
       <NavLink to = {'/statssingle/statsid1'}>
         <div>statsid11111</div>
       </NavLink>
