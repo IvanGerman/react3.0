@@ -1,7 +1,7 @@
 import { Navigate, NavLink } from "react-router-dom";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-const StatsPage = () => {
+const StatsPage = (props) => { console.log('props--',props);
 
   const params = useParams();
   const location = useLocation();
@@ -10,13 +10,18 @@ const StatsPage = () => {
   console.log('location---',location);
   //console.log('navigate---',navigate);
 
-  //return <Navigate to="/" replace={true} />
-
-  function useNavigateComponent() {
-    //alert('navigate')
-    //const navigate = useNavigate();
-    //navigate('/gamePage')
+  if( props.navigateMode ) {
     return <Navigate to="/" replace={true} />
+  }
+
+  // it works just one time, after that you cant access statsPage anymore, because navigateMode=true then
+  function useNavigateComponent() {
+    alert('navigate')
+    if( props.navigateMode ) {
+      props.toggleNavigateMode(false);
+      return; 
+    };
+    props.toggleNavigateMode(true);
   };
 
   return (
