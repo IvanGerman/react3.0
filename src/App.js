@@ -4,7 +4,7 @@ import './App.css';
 import  GamePageContainer from './components/GamePage/GamePageContainer';
 import Navbar from './components/Navbar/Navbar';
 import { StartPageContainer } from './components/StartPage/StartPageContainer';
-import { StatsPageContainer } from './components/StatsPage/StatsPageContainer';
+import  StatsPageContainer  from './components/StatsPage/StatsPageContainer';
 import StatsSinglePage from './components/StatsPage/StatsSinglePage/StatsSinglePage';
 
 
