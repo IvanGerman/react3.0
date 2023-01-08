@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { myHoc } from "../../../hoc/myHoc";
 
 
 const StatsSinglePage = () => {
@@ -15,4 +16,7 @@ const StatsSinglePage = () => {
   )
 }
 
-export default StatsSinglePage;
+const StatsSinglePageAfterHOCuse = myHoc(StatsSinglePage);
+
+export default StatsSinglePageAfterHOCuse;
+//export default StatsSinglePage;
