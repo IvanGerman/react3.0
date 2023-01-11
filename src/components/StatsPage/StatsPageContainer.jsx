@@ -30,3 +30,4 @@ export default compose(
 
 //const StatsPageWithMyHocUse = myHoc(StatsPage);
 //export const StatsPageContainer = connect(mapStateToProps, mapDispatchToProps)(StatsPageWithMyHocUse);
+console.log('just using new console.log calling way');
