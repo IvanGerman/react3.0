@@ -12,6 +12,9 @@ const Navbar = () => {
       <br></br>
       <br></br>
       <NavLink to="/">StartPage</NavLink>
+      <br></br>
+      <br></br>
+      <NavLink to="/formikPage">FormikPage</NavLink>
     </nav>
   )
 }

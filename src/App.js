@@ -1,6 +1,7 @@
 import {Route, Routes} from 'react-router-dom';
 
 import './App.css';
+import { FormikPageContainer } from './components/FormikPage/FormikPageContainer';
 import  GamePageContainer from './components/GamePage/GamePageContainer';
 import Navbar from './components/Navbar/Navbar';
 import { StartPageContainer } from './components/StartPage/StartPageContainer';
@@ -18,6 +19,7 @@ const App = (props) => {
           {/* <Route path="gamePage/*" element={<GamePageContainer store={props.store}/>}/> */}
           <Route path="statsPage/*" element={<StatsPageContainer/>}/>
           <Route path="statssingle/:statsid" element={<StatsSinglePage/>}/>
+          <Route path="formikPage/*" element={<FormikPageContainer/>}/>
         </Routes>
         <Navbar></Navbar>
       </div>
