@@ -1,4 +1,4 @@
-import { Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 
 
 
@@ -7,11 +7,15 @@ const FormikPage = (props) => {
     <div>
       FormikPage
       <Formik
-       initialValues={{ email: '', password: '' }}
+       initialValues={{ email: '', password: '', username: '' }}
        validate={values => {
          const errors = {};
          if (!values.email) {
            errors.email = 'Required';
+         } else if (!values.password){
+           errors.password = 'password required';
+         } else if (!values.username){
+            errors.username = 'username required';
          } else if (
            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
          ) {
@@ -26,37 +30,22 @@ const FormikPage = (props) => {
          }, 400);
        }}
      >
-       {({
-         values,
-         errors,
-         touched,
-         handleChange,
-         handleBlur,
-         handleSubmit,
-         isSubmitting,
-         /* and other goodies */
-       }) => (
-         <form onSubmit={handleSubmit}>
-           <input
-             type="email"
-             name="email"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.email}
-           />
-           {errors.email && touched.email && errors.email}
-           <input
-             type="password"
-             name="password"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.password}
-           />
-           {errors.password && touched.password && errors.password}
+       {({ isSubmitting }) => (
+         <Form>
+           <br/><br/>
+           <Field type="email" name="email" />
+           <br/><br/>
+           <ErrorMessage name="email" component="div" />
+           <Field type="password" name="password" />
+           <br/><br/>
+           <ErrorMessage name="password" component="div" />
+           <Field type="username" name="username" placeholder="gffrg" />
+           <br/><br/>
+           <ErrorMessage name="username" component="div" />
            <button type="submit" disabled={isSubmitting}>
              Submit
            </button>
-         </form>
+         </Form>
        )}
      </Formik>
     </div>
