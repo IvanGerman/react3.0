@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addMessageAC, updateMessageAC } from "../../redux/gamePageReducer";
+import { getGamePageData } from "../../redux/Selectors/gamePage-selectors";
 import GamePage from "./GamePage";
 
 const GamePageContainer = (props) => {
@@ -17,7 +18,7 @@ const GamePageContainer = (props) => {
 
 let mapStateToProps = (state) => {
   return {
-    gamePageData: state.gamePageData,
+    gamePageData: getGamePageData(state),
     updatedMessageID: state.gamePageData.updatedMessageID,
     textareaRef: React.createRef(),
     textareaRef2: React.createRef()
