@@ -7,6 +7,7 @@ import Navbar from './components/Navbar/Navbar';
 import { StartPageContainer } from './components/StartPage/StartPageContainer';
 import  StatsPageContainer  from './components/StatsPage/StatsPageContainer';
 import StatsSinglePage from './components/StatsPage/StatsSinglePage/StatsSinglePage';
+import UseHooksPage from './components/UseHooksPage/UseHooksPage';
 
 
 const App = (props) => { 
@@ -20,6 +21,7 @@ const App = (props) => {
           <Route path="statsPage/*" element={<StatsPageContainer/>}/>
           <Route path="statssingle/:statsid" element={<StatsSinglePage/>}/>
           <Route path="formikPage/*" element={<FormikPageContainer/>}/>
+          <Route path="useHooksPage/*" element={<UseHooksPage/>}/> 
         </Routes>
         <Navbar></Navbar>
       </div>

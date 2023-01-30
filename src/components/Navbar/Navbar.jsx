@@ -15,6 +15,9 @@ const Navbar = () => {
       <br></br>
       <br></br>
       <NavLink to="/formikPage">FormikPage</NavLink>
+      <br></br>
+      <br></br>
+      <NavLink to="/useHooksPage">UseHooksPage</NavLink>
     </nav>
   )
 }
