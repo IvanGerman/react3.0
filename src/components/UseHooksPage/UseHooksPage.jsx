@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 import styles from './UseHooksPage.module.css';
 
 
 const UseHooksPage = (props) => { 
+
+  // hooks are not to use inside of conditionals and cycles
+  
+  //useState--------------------------------------------
 
   //this 3 lines are explaining the line below
   //let localState = useState(true);
@@ -23,7 +27,15 @@ const UseHooksPage = (props) => {
   const deactivateEditMode = () => {
     setEditMode(false);
     console.log('editModeDeact---',editMode);
-  }
+  };
+
+
+  //useEffect--------------------------------------------
+  //starts his callback function after the rendering of the component
+
+  useEffect(() => { console.log('useEffect');
+    if (editMode) alert(editMode);
+  }, [editMode]);//[editMode] - in this array we set dependencies, when hooks callback function will be launched
 
   return (
     <div className={styles.useHooksPage}>
