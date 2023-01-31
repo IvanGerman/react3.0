@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { useState } from "react";
 
 import styles from './UseHooksPage.module.css';
@@ -30,12 +30,20 @@ const UseHooksPage = (props) => {
   };
 
 
-  //useEffect--------------------------------------------
+  //useEffect--------------------------------------------is asynchronously
   //starts his callback function after the rendering of the component
 
   useEffect(() => { console.log('useEffect');
     if (editMode) alert(editMode);
   }, [editMode]);//[editMode] - in this array we set dependencies, when hooks callback function will be launched
+
+
+  //useLayoutEffect--------------------------------------------is synchronously
+
+  useLayoutEffect(() => { console.log('useEffect');
+    if (!editMode) console.log('useLayoutEffect editMode', editMode);
+  }, [editMode])
+
 
   return (
     <div className={styles.useHooksPage}>
