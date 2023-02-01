@@ -19,14 +19,14 @@ const UseHooksPage = (props) => {
 
   const activateEditMode = () => {
     setEditMode(true);
-    console.log('editModeAct---',editMode);
+    console.log('activateEditMode editMode---',editMode);
     setValue1(value1+=1);
     console.log('value1---',value1);
   };
 
   const deactivateEditMode = () => {
     setEditMode(false);
-    console.log('editModeDeact---',editMode);
+    console.log('deactivateEditMode editMode---',editMode);
   };
 
 
@@ -34,14 +34,14 @@ const UseHooksPage = (props) => {
   //starts his callback function after the rendering of the component
 
   useEffect(() => { console.log('useEffect');
-    if (editMode) alert(editMode);
+    if (editMode) console.log('useEffect editMode---', editMode);
   }, [editMode]);//[editMode] - in this array we set dependencies, when hooks callback function will be launched
 
 
   //useLayoutEffect--------------------------------------------is synchronously
 
-  useLayoutEffect(() => { console.log('useEffect');
-    if (!editMode) console.log('useLayoutEffect editMode', editMode);
+  useLayoutEffect(() => { console.log('useLayoutEffect');
+    if (editMode) console.log('useLayoutEffect editMode---', editMode);
   }, [editMode])
 
 
